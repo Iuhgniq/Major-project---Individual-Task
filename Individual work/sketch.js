@@ -2,6 +2,10 @@ let curves = [];
 let colOffset = 0;
 let ghostLayer;
 
+let moveSpeed = 0;
+let moveOffset = 0;
+let rate = 1;
+
 function setup() {
   createCanvas(1280, 720);
   backgroundCurve();
@@ -22,6 +26,9 @@ function draw() {
 }
 //draw the background curves and the side curve(set the color of it)
 function drawCurves(){
+
+  moveOffset += moveSpeed * rate;
+
   for (let i = 0; i < curves.length; i++) {
     curves[i].display();
   }
@@ -29,6 +36,9 @@ function drawCurves(){
     let change = map(sidexoff, 1200, width * 1.2, 15, 50);
     fill(10, change + 10, change + 20);
     sideCurve(sidexoff);
+  }
+  if (mouseIsPressed) {
+    rate = map(mouseX,0,width,0.1,2);
   }
 }
 
@@ -85,6 +95,14 @@ function sideCurve(offset) {
   endShape(CLOSE);
 }
 
+function mouseClicked() {
+  if (moveSpeed == 0) {
+    moveSpeed = -0.05;
+  } else {
+    moveSpeed = 0;
+  }
+}
+
 //this is the class of the curve
 class Curve {
   constructor(start, fillColor, yOffset, amplitude, xIncrement) {
@@ -94,14 +112,16 @@ class Curve {
     this.yOffset = yOffset;
     this.amplitude = amplitude;
     this.xIncrement = xIncrement;
+    this.speed =  (2 + xIncrement )* mouseX;
   }
+
   display() {
     fill(
       this.fillColor.levels[0],
       this.fillColor.levels[1],
       this.fillColor.levels[2]
     );
-    let xoff = this.start;
+    let xoff = moveOffset + this.start;
     let currentxIncrement = this.xIncrement;
 
     beginShape();
