@@ -52,7 +52,7 @@ function drawCurves(){
     sideCurve(sidexoff);
   }
   if (mouseIsPressed) {
-    rate = map(mouseX,0,width,0.1,2);
+    rate = map(mouseX,0,width,0.1,1.5);
   }
 }
 
