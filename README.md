@@ -1,10 +1,10 @@
 # qhua6277_9103_Individual_tut02
 
-**Qinghui's individual work**
+**Qinghui's individual work**\
 Added animation based on user input for background curves to the group code.
 
 **user input**\
-Click on the screen to see the flow of the sky and the waves.\ 
+Click on the screen to see the flow of the sky and the waves. 
 
 When clicking, the closer the mouse is to the left side of the screen, the slower the flow is, while the closer it is to the right side, the faster the flow is. There also will be a slight difference in the flow speed of the sky and the waves.
 
