@@ -7,7 +7,9 @@ let moveOffset = 0;
 let rate = 1;
 
 function setup() {
-  createCanvas(1280, 720);
+  let canvas = createCanvas(1280, 720);
+  canvas.parent('canvasContainer');
+
   backgroundCurve();
   ghostLayer = createGraphics(width, height); // this ghostLayer object has referenced Chatgpt solution.
   drawGhostBodyWaves();
@@ -116,11 +118,7 @@ class Curve {
   }
 
   display() {
-    fill(
-      this.fillColor.levels[0],
-      this.fillColor.levels[1],
-      this.fillColor.levels[2]
-    );
+    fill(this.fillColor.levels[0], this.fillColor.levels[1], this.fillColor.levels[2]);
     let xoff = moveOffset + this.start;
     let currentxIncrement = this.xIncrement;
 
